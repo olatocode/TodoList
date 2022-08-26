@@ -9,7 +9,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // use cors
 app.use(cors());
-import userRouter from './src/routes/user.route'
+import userRouter from './src/routes/user.route';
+import noteRouter from './src/routes/note.route';
+
 import connect_mongoDB from './src/database/mongodb';
 const port = process.env.PORT;
 
@@ -19,7 +21,8 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/api/v1', userRouter)
+app.use('/api/v1', userRouter);
+app.use('/api/v1', noteRouter);
 
 connect_mongoDB;
 
